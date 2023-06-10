@@ -1,6 +1,6 @@
 #folders with source material
 texts/*
-.streamlit/*
+.streamlit/secrets.toml
 source_documents/*
 # Byte-compiled / optimized / DLL files
 __pycache__/

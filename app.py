@@ -10,7 +10,7 @@ from langchain.agents.agent_toolkits import (
 )
 from constants import CHROMA_SETTINGS
 
-os["OPENAI_API_KEY"] =st.secrets["openai_key"]
+os.environ["OPENAI_API_KEY"] =st.secrets["openai_key"]
 llm = OpenAI(temperature=0.1, verbose=True)
 embeddings_model_name = st.secrets["EMBEDDINGS_MODEL_NAME"]
 persist_directory = st.secrets["PERSIST_DIRECTORY"]
@@ -30,7 +30,7 @@ vectorstore_info = VectorStoreInfo(
 toolkit = VectorStoreToolkit(vectorstore_info=vectorstore_info)
 agent_executor = create_vectorstore_agent(llm=llm, toolkit=toolkit, verbose=True)
 
-st.title("🐲🔥 Oghma")
+st.title("🐲👁️ BB=B Beholder")
 prompt = st.text_input("Input your prompt here")
 if prompt:
     response = agent_executor.run(prompt)
