@@ -1,6 +1,5 @@
 #folders with source material
 texts/*
-db/*
 .streamlit/*
 source_documents/*
 # Byte-compiled / optimized / DLL files
