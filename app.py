@@ -10,26 +10,26 @@ from langchain.agents.agent_toolkits import (
 )
 from constants import CHROMA_SETTINGS
 
+# Intialize environmental variables
 os.environ["OPENAI_API_KEY"] = st.secrets["openai_key"]
-llm = OpenAI(temperature=0.1, verbose=True)
 embeddings_model_name = st.secrets["EMBEDDINGS_MODEL_NAME"]
 persist_directory = st.secrets["PERSIST_DIRECTORY"]
+
+# Intialize LLM, vector database and LangChain agent.
+llm = OpenAI(temperature=0.1, verbose=True)
 embeddings = HuggingFaceEmbeddings(model_name=embeddings_model_name)
-
-
 store = Chroma(
     persist_directory=persist_directory,
     embedding_function=embeddings,
     client_settings=CHROMA_SETTINGS,
 )
-# Create vectorstore info object - metadata repo?
 vectorstore_info = VectorStoreInfo(
     name="clean_original", description="full recap of DND Adventures", vectorstore=store
 )
-# Convert the document store into a langchain toolkit
 toolkit = VectorStoreToolkit(vectorstore_info=vectorstore_info)
 agent_executor = create_vectorstore_agent(llm=llm, toolkit=toolkit, verbose=True)
 
+# Create streamlit app
 st.title("🐲👁️ BB+B Beholder")
 prompt = st.text_input("What question do you ponder?")
 if prompt:
