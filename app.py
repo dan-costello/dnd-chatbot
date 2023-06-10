@@ -11,8 +11,8 @@ from langchain.agents.agent_toolkits import (
     VectorStoreInfo,
 )
 
-OpenAI.api_key = st.secrets["openai_key"]
-llm = OpenAI()
+
+llm = OpenAI(openai_api_key=st.secrets["openai_key"])
 
 load_dotenv()
 llm = OpenAI(temperature=0.1, verbose=True)
