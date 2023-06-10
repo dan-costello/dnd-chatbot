@@ -11,11 +11,8 @@ from langchain.agents.agent_toolkits import (
     VectorStoreInfo,
 )
 
-
-llm = OpenAI(openai_api_key=st.secrets["openai_key"])
-
 load_dotenv()
-llm = OpenAI(temperature=0.1, verbose=True)
+llm = OpenAI(temperature=0.1, verbose=True,openai_api_key=st.secrets["openai_key"])
 embeddings_model_name = os.environ.get("EMBEDDINGS_MODEL_NAME")
 persist_directory = os.environ.get("PERSIST_DIRECTORY")
 embeddings = HuggingFaceEmbeddings(model_name=embeddings_model_name)
