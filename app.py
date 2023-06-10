@@ -10,7 +10,7 @@ from langchain.agents.agent_toolkits import (
 )
 from constants import CHROMA_SETTINGS
 
-os.environ["OPENAI_API_KEY"] =st.secrets["openai_key"]
+os.environ["OPENAI_API_KEY"] = st.secrets["openai_key"]
 llm = OpenAI(temperature=0.1, verbose=True)
 embeddings_model_name = st.secrets["EMBEDDINGS_MODEL_NAME"]
 persist_directory = st.secrets["PERSIST_DIRECTORY"]
