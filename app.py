@@ -30,7 +30,7 @@ vectorstore_info = VectorStoreInfo(
 toolkit = VectorStoreToolkit(vectorstore_info=vectorstore_info)
 agent_executor = create_vectorstore_agent(llm=llm, toolkit=toolkit, verbose=True)
 
-st.title("🐲👁️ BB=B Beholder")
+st.title("🐲👁️ BB+B Beholder")
 prompt = st.text_input("Input your prompt here")
 if prompt:
     response = agent_executor.run(prompt)
