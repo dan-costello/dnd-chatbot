@@ -1,4 +1,5 @@
 from langchain.llms import OpenAI
+import os
 import streamlit as st
 from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.vectorstores import Chroma
@@ -9,7 +10,8 @@ from langchain.agents.agent_toolkits import (
 )
 from constants import CHROMA_SETTINGS
 
-llm = OpenAI(temperature=0.1, verbose=True, openai_api_key=st.secrets["openai_key"])
+os["OPENAI_API_KEY"] =st.secrets["openai_key"]
+llm = OpenAI(temperature=0.1, verbose=True)
 embeddings_model_name = st.secrets["EMBEDDINGS_MODEL_NAME"]
 persist_directory = st.secrets["PERSIST_DIRECTORY"]
 embeddings = HuggingFaceEmbeddings(model_name=embeddings_model_name)
